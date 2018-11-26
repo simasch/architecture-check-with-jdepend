@@ -2,6 +2,7 @@ package ch.martinelli;
 
 import jdepend.framework.DependencyConstraint;
 import jdepend.framework.JDepend;
+import jdepend.framework.JavaClass;
 import jdepend.framework.JavaPackage;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -25,20 +26,25 @@ public class ArchitectureTest {
         DependencyConstraint constraint = new DependencyConstraint();
 
         JavaPackage root = constraint.addPackage("ch.martinelli");
-        JavaPackage boundary = constraint.addPackage("ch.martinelli.boundary");
-        JavaPackage service = constraint.addPackage("ch.martinelli.control.service");
-        JavaPackage repository = constraint.addPackage("ch.martinelli.control.repository");
+        JavaPackage api = constraint.addPackage("ch.martinelli.api");
+        JavaPackage service = constraint.addPackage("ch.martinelli.service");
+        JavaPackage repository = constraint.addPackage("ch.martinelli.repository");
         JavaPackage entity = constraint.addPackage("ch.martinelli.entity");
-        JavaPackage javaLang = constraint.addPackage("java.lang");
-        JavaPackage javaUtil = constraint.addPackage("java.util");
+
+
         JavaPackage springBoot = constraint.addPackage("org.springframework.boot");
         JavaPackage springDataJpaRepository = constraint.addPackage("org.springframework.data.jpa.repository");
+        JavaPackage javaLang = constraint.addPackage("java.lang");
+        JavaPackage javaUtil = constraint.addPackage("java.util");
 
-        boundary.dependsUpon(service);
-        boundary.dependsUpon(entity);
+        api.dependsUpon(service);
+        api.dependsUpon(entity);
 
         service.dependsUpon(repository);
         service.dependsUpon(entity);
+
+        root.dependsUpon(springBoot);
+        repository.dependsUpon(springDataJpaRepository);
 
         jdepend.analyze();
 

@@ -1,6 +1,6 @@
-package ch.martinelli.control.service;
+package ch.martinelli.service;
 
-import ch.martinelli.control.repository.ProductRepository;
+import ch.martinelli.repository.ProductRepository;
 import ch.martinelli.entity.Product;
 import org.springframework.stereotype.Service;
 
