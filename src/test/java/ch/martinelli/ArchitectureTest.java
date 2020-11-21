@@ -17,7 +17,7 @@ public class ArchitectureTest {
 
     @BeforeAll
     public static void beforeClass() throws IOException {
-        jdepend.addDirectory("C:\\Users\\simon\\Workspace\\architecture-check-with-jdepend\\target\\classes");
+        jdepend.addDirectory("C:\\Users\\simon\\WorkspaceBFH\\architecture-check\\architecture-check-with-jdepend\\target\\classes");
     }
 
     @Test
